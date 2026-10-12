@@ -1,0 +1,796 @@
+{
+  "_class": "page",
+  "do_objectID": "PAGE-0003",
+  "name": "Page 3",
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0
+  },
+  "isVisible": true,
+  "layers": [
+    {
+      "_class": "artboard",
+      "do_objectID": "A-SHAPES",
+      "name": "Shapes",
+      "isVisible": true,
+      "rotation": 0,
+      "isFlippedHorizontal": false,
+      "isFlippedVertical": false,
+      "frame": {
+        "_class": "rect",
+        "constrainProportions": false,
+        "x": 0,
+        "y": 0,
+        "width": 460,
+        "height": 240
+      },
+      "hasBackgroundColor": true,
+      "backgroundColor": {
+        "_class": "color",
+        "red": 1,
+        "green": 1,
+        "blue": 1,
+        "alpha": 1
+      },
+      "layers": [
+        {
+          "_class": "rectangle",
+          "do_objectID": "R-ROUND",
+          "name": "Rounded",
+          "isVisible": true,
+          "rotation": 0,
+          "isFlippedHorizontal": false,
+          "isFlippedVertical": false,
+          "frame": {
+            "_class": "rect",
+            "constrainProportions": false,
+            "x": 20,
+            "y": 20,
+            "width": 120,
+            "height": 80
+          },
+          "style": {
+            "_class": "style",
+            "fills": [
+              {
+                "_class": "fill",
+                "isEnabled": true,
+                "fillType": 0,
+                "color": {
+                  "_class": "color",
+                  "red": 0.2,
+                  "green": 0.45,
+                  "blue": 0.9,
+                  "alpha": 1
+                }
+              }
+            ],
+            "borders": []
+          },
+          "points": [
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 16,
+              "point": "{0, 0}",
+              "curveFrom": "{0, 0}",
+              "curveTo": "{0, 0}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 16,
+              "point": "{1, 0}",
+              "curveFrom": "{1, 0}",
+              "curveTo": "{1, 0}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 16,
+              "point": "{1, 1}",
+              "curveFrom": "{1, 1}",
+              "curveTo": "{1, 1}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 16,
+              "point": "{0, 1}",
+              "curveFrom": "{0, 1}",
+              "curveTo": "{0, 1}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            }
+          ],
+          "isClosed": true
+        },
+        {
+          "_class": "rectangle",
+          "do_objectID": "R-ROTATED",
+          "name": "Rotated 30",
+          "isVisible": true,
+          "rotation": 30,
+          "isFlippedHorizontal": false,
+          "isFlippedVertical": false,
+          "frame": {
+            "_class": "rect",
+            "constrainProportions": false,
+            "x": 180,
+            "y": 30,
+            "width": 100,
+            "height": 60
+          },
+          "style": {
+            "_class": "style",
+            "fills": [
+              {
+                "_class": "fill",
+                "isEnabled": true,
+                "fillType": 0,
+                "color": {
+                  "_class": "color",
+                  "red": 0.95,
+                  "green": 0.55,
+                  "blue": 0.15,
+                  "alpha": 1
+                }
+              }
+            ],
+            "borders": [
+              {
+                "_class": "border",
+                "isEnabled": true,
+                "fillType": 0,
+                "color": {
+                  "_class": "color",
+                  "red": 0.15,
+                  "green": 0.15,
+                  "blue": 0.2,
+                  "alpha": 1
+                },
+                "thickness": 2
+              }
+            ]
+          },
+          "points": [
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 0,
+              "point": "{0, 0}",
+              "curveFrom": "{0, 0}",
+              "curveTo": "{0, 0}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 0,
+              "point": "{1, 0}",
+              "curveFrom": "{1, 0}",
+              "curveTo": "{1, 0}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 0,
+              "point": "{1, 1}",
+              "curveFrom": "{1, 1}",
+              "curveTo": "{1, 1}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 0,
+              "point": "{0, 1}",
+              "curveFrom": "{0, 1}",
+              "curveTo": "{0, 1}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            }
+          ],
+          "isClosed": true
+        },
+        {
+          "_class": "triangle",
+          "do_objectID": "T-FLIPPED",
+          "name": "Flipped Triangle",
+          "isVisible": true,
+          "rotation": 0,
+          "isFlippedHorizontal": false,
+          "isFlippedVertical": true,
+          "frame": {
+            "_class": "rect",
+            "constrainProportions": false,
+            "x": 320,
+            "y": 20,
+            "width": 100,
+            "height": 80
+          },
+          "style": {
+            "_class": "style",
+            "fills": [
+              {
+                "_class": "fill",
+                "isEnabled": true,
+                "fillType": 0,
+                "color": {
+                  "_class": "color",
+                  "red": 0.3,
+                  "green": 0.7,
+                  "blue": 0.4,
+                  "alpha": 1
+                }
+              }
+            ],
+            "borders": []
+          },
+          "points": [
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 0,
+              "point": "{0.5, 0}",
+              "curveFrom": "{0.5, 0}",
+              "curveTo": "{0.5, 0}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 0,
+              "point": "{1, 1}",
+              "curveFrom": "{1, 1}",
+              "curveTo": "{1, 1}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 0,
+              "point": "{0, 1}",
+              "curveFrom": "{0, 1}",
+              "curveTo": "{0, 1}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            }
+          ],
+          "isClosed": true
+        },
+        {
+          "_class": "star",
+          "do_objectID": "S-STAR",
+          "name": "Star",
+          "isVisible": true,
+          "rotation": 0,
+          "isFlippedHorizontal": false,
+          "isFlippedVertical": false,
+          "frame": {
+            "_class": "rect",
+            "constrainProportions": false,
+            "x": 20,
+            "y": 130,
+            "width": 90,
+            "height": 90
+          },
+          "style": {
+            "_class": "style",
+            "fills": [
+              {
+                "_class": "fill",
+                "isEnabled": true,
+                "fillType": 0,
+                "color": {
+                  "_class": "color",
+                  "red": 0.95,
+                  "green": 0.8,
+                  "blue": 0.1,
+                  "alpha": 1
+                }
+              }
+            ],
+            "borders": [
+              {
+                "_class": "border",
+                "isEnabled": true,
+                "fillType": 0,
+                "color": {
+                  "_class": "color",
+                  "red": 0.15,
+                  "green": 0.15,
+                  "blue": 0.2,
+                  "alpha": 1
+                },
+                "thickness": 1
+              }
+            ]
+          },
+          "points": [
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 0,
+              "point": "{0.5, 0}",
+              "curveFrom": "{0.5, 0}",
+              "curveTo": "{0.5, 0}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 0,
+              "point": "{0.62, 0.36}",
+              "curveFrom": "{0.62, 0.36}",
+              "curveTo": "{0.62, 0.36}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 0,
+              "point": "{1, 0.38}",
+              "curveFrom": "{1, 0.38}",
+              "curveTo": "{1, 0.38}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 0,
+              "point": "{0.7, 0.62}",
+              "curveFrom": "{0.7, 0.62}",
+              "curveTo": "{0.7, 0.62}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 0,
+              "point": "{0.81, 1}",
+              "curveFrom": "{0.81, 1}",
+              "curveTo": "{0.81, 1}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 0,
+              "point": "{0.5, 0.78}",
+              "curveFrom": "{0.5, 0.78}",
+              "curveTo": "{0.5, 0.78}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 0,
+              "point": "{0.19, 1}",
+              "curveFrom": "{0.19, 1}",
+              "curveTo": "{0.19, 1}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 0,
+              "point": "{0.3, 0.62}",
+              "curveFrom": "{0.3, 0.62}",
+              "curveTo": "{0.3, 0.62}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 0,
+              "point": "{0, 0.38}",
+              "curveFrom": "{0, 0.38}",
+              "curveTo": "{0, 0.38}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 0,
+              "point": "{0.38, 0.36}",
+              "curveFrom": "{0.38, 0.36}",
+              "curveTo": "{0.38, 0.36}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            }
+          ],
+          "isClosed": true
+        },
+        {
+          "_class": "shapePath",
+          "do_objectID": "P-WAVE",
+          "name": "Wave",
+          "isVisible": true,
+          "rotation": 0,
+          "isFlippedHorizontal": false,
+          "isFlippedVertical": false,
+          "frame": {
+            "_class": "rect",
+            "constrainProportions": false,
+            "x": 140,
+            "y": 140,
+            "width": 140,
+            "height": 70
+          },
+          "style": {
+            "_class": "style",
+            "fills": [],
+            "borders": [
+              {
+                "_class": "border",
+                "isEnabled": true,
+                "fillType": 0,
+                "color": {
+                  "_class": "color",
+                  "red": 0.2,
+                  "green": 0.45,
+                  "blue": 0.9,
+                  "alpha": 1
+                },
+                "thickness": 3
+              }
+            ]
+          },
+          "points": [
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 0,
+              "point": "{0, 0.5}",
+              "curveFrom": "{0.17, -0.2}",
+              "curveTo": "{0, 0.5}",
+              "hasCurveFrom": true,
+              "hasCurveTo": false,
+              "curveMode": 2
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 0,
+              "point": "{0.5, 0.5}",
+              "curveFrom": "{0.67, 1.2}",
+              "curveTo": "{0.33, -0.2}",
+              "hasCurveFrom": true,
+              "hasCurveTo": true,
+              "curveMode": 2
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 0,
+              "point": "{1, 0.5}",
+              "curveFrom": "{1, 0.5}",
+              "curveTo": "{0.83, 1.2}",
+              "hasCurveFrom": false,
+              "hasCurveTo": true,
+              "curveMode": 2
+            }
+          ],
+          "isClosed": false
+        },
+        {
+          "_class": "bitmap",
+          "do_objectID": "B-FLIPPED",
+          "name": "Flipped Photo",
+          "isVisible": true,
+          "rotation": 0,
+          "isFlippedHorizontal": true,
+          "isFlippedVertical": false,
+          "frame": {
+            "_class": "rect",
+            "constrainProportions": false,
+            "x": 320,
+            "y": 140,
+            "width": 120,
+            "height": 75
+          },
+          "style": {
+            "_class": "style",
+            "fills": [],
+            "borders": []
+          },
+          "image": {
+            "_class": "MSJSONFileReference",
+            "_ref_class": "MSImageData",
+            "_ref": "images/photo.png"
+          }
+        },
+        {
+          "_class": "text",
+          "do_objectID": "T-ROTATED",
+          "name": "Rotated Text",
+          "isVisible": true,
+          "rotation": -10,
+          "isFlippedHorizontal": false,
+          "isFlippedVertical": false,
+          "frame": {
+            "_class": "rect",
+            "constrainProportions": false,
+            "x": 300,
+            "y": 110,
+            "width": 140,
+            "height": 18
+          },
+          "style": {
+            "_class": "style",
+            "fills": [],
+            "borders": []
+          },
+          "textBehaviour": 0,
+          "attributedString": {
+            "_class": "attributedString",
+            "string": "Rotated -10",
+            "attributes": [
+              {
+                "_class": "stringAttribute",
+                "location": 0,
+                "length": 11,
+                "attributes": {
+                  "MSAttributedStringFontAttribute": {
+                    "_class": "fontDescriptor",
+                    "attributes": {
+                      "name": "Helvetica-Bold",
+                      "size": 13
+                    }
+                  },
+                  "MSAttributedStringColorAttribute": {
+                    "_class": "color",
+                    "red": 0.1,
+                    "green": 0.1,
+                    "blue": 0.1,
+                    "alpha": 1
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "_class": "slice",
+          "do_objectID": "SL-EXPORT",
+          "name": "Export Slice",
+          "isVisible": true,
+          "rotation": 0,
+          "isFlippedHorizontal": false,
+          "isFlippedVertical": false,
+          "frame": {
+            "_class": "rect",
+            "constrainProportions": false,
+            "x": 0,
+            "y": 0,
+            "width": 460,
+            "height": 240
+          }
+        }
+      ]
+    },
+    {
+      "_class": "symbolMaster",
+      "do_objectID": "M-BADGE",
+      "name": "Badge",
+      "isVisible": true,
+      "rotation": 0,
+      "isFlippedHorizontal": false,
+      "isFlippedVertical": false,
+      "frame": {
+        "_class": "rect",
+        "constrainProportions": false,
+        "x": 0,
+        "y": 260,
+        "width": 120,
+        "height": 40
+      },
+      "symbolID": "SYMBOL-BADGE",
+      "hasBackgroundColor": false,
+      "backgroundColor": {
+        "_class": "color",
+        "red": 1,
+        "green": 1,
+        "blue": 1,
+        "alpha": 1
+      },
+      "layers": [
+        {
+          "_class": "rectangle",
+          "do_objectID": "M-BADGE-BG",
+          "name": "Background",
+          "isVisible": true,
+          "rotation": 0,
+          "isFlippedHorizontal": false,
+          "isFlippedVertical": false,
+          "frame": {
+            "_class": "rect",
+            "constrainProportions": false,
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 40
+          },
+          "style": {
+            "_class": "style",
+            "fills": [
+              {
+                "_class": "fill",
+                "isEnabled": true,
+                "fillType": 0,
+                "color": {
+                  "_class": "color",
+                  "red": 0.95,
+                  "green": 0.55,
+                  "blue": 0.15,
+                  "alpha": 1
+                }
+              }
+            ],
+            "borders": []
+          },
+          "points": [
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 20,
+              "point": "{0, 0}",
+              "curveFrom": "{0, 0}",
+              "curveTo": "{0, 0}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 20,
+              "point": "{1, 0}",
+              "curveFrom": "{1, 0}",
+              "curveTo": "{1, 0}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 20,
+              "point": "{1, 1}",
+              "curveFrom": "{1, 1}",
+              "curveTo": "{1, 1}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            },
+            {
+              "_class": "curvePoint",
+              "cornerRadius": 20,
+              "point": "{0, 1}",
+              "curveFrom": "{0, 1}",
+              "curveTo": "{0, 1}",
+              "hasCurveFrom": false,
+              "hasCurveTo": false,
+              "curveMode": 1
+            }
+          ],
+          "isClosed": true
+        },
+        {
+          "_class": "text",
+          "do_objectID": "M-BADGE-LABEL",
+          "name": "Label",
+          "isVisible": true,
+          "rotation": 0,
+          "isFlippedHorizontal": false,
+          "isFlippedVertical": false,
+          "frame": {
+            "_class": "rect",
+            "constrainProportions": false,
+            "x": 16,
+            "y": 11,
+            "width": 88,
+            "height": 18
+          },
+          "style": {
+            "_class": "style",
+            "fills": [],
+            "borders": []
+          },
+          "textBehaviour": 0,
+          "attributedString": {
+            "_class": "attributedString",
+            "string": "Badge",
+            "attributes": [
+              {
+                "_class": "stringAttribute",
+                "location": 0,
+                "length": 5,
+                "attributes": {
+                  "MSAttributedStringFontAttribute": {
+                    "_class": "fontDescriptor",
+                    "attributes": {
+                      "name": "Helvetica-Bold",
+                      "size": 14
+                    }
+                  },
+                  "MSAttributedStringColorAttribute": {
+                    "_class": "color",
+                    "red": 1,
+                    "green": 1,
+                    "blue": 1,
+                    "alpha": 1
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "_class": "symbolInstance",
+      "do_objectID": "I-BADGE-1",
+      "name": "Badge",
+      "isVisible": true,
+      "rotation": 0,
+      "isFlippedHorizontal": false,
+      "isFlippedVertical": false,
+      "frame": {
+        "_class": "rect",
+        "constrainProportions": false,
+        "x": 160,
+        "y": 260,
+        "width": 120,
+        "height": 40
+      },
+      "symbolID": "SYMBOL-BADGE",
+      "overrideValues": []
+    },
+    {
+      "_class": "symbolInstance",
+      "do_objectID": "I-BADGE-2",
+      "name": "Badge (override)",
+      "isVisible": true,
+      "rotation": 0,
+      "isFlippedHorizontal": false,
+      "isFlippedVertical": false,
+      "frame": {
+        "_class": "rect",
+        "constrainProportions": false,
+        "x": 300,
+        "y": 260,
+        "width": 160,
+        "height": 40
+      },
+      "symbolID": "SYMBOL-BADGE",
+      "overrideValues": [
+        {
+          "_class": "overrideValue",
+          "overrideName": "M-BADGE-LABEL_stringValue",
+          "value": "Override"
+        }
+      ]
+    }
+  ]
+}

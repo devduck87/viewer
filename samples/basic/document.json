@@ -1,0 +1,25 @@
+{
+  "_class": "document",
+  "do_objectID": "DOC-0001",
+  "assets": {
+    "_class": "assetCollection"
+  },
+  "currentPageIndex": 0,
+  "pages": [
+    {
+      "_class": "MSJSONFileReference",
+      "_ref_class": "MSImmutablePage",
+      "_ref": "pages/PAGE-0001"
+    },
+    {
+      "_class": "MSJSONFileReference",
+      "_ref_class": "MSImmutablePage",
+      "_ref": "pages/PAGE-0002"
+    },
+    {
+      "_class": "MSJSONFileReference",
+      "_ref_class": "MSImmutablePage",
+      "_ref": "pages/PAGE-0003"
+    }
+  ]
+}

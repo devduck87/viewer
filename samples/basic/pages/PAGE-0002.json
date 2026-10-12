@@ -1,0 +1,69 @@
+{
+  "_class": "page",
+  "do_objectID": "PAGE-0002",
+  "name": "Page 2",
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "height": 0,
+    "width": 0,
+    "x": 0,
+    "y": 0
+  },
+  "isVisible": true,
+  "layers": [
+    {
+      "_class": "oval",
+      "do_objectID": "O-CIRCLE",
+      "booleanOperation": -1,
+      "isVisible": true,
+      "name": "Circle",
+      "frame": {
+        "_class": "rect",
+        "constrainProportions": false,
+        "height": 100,
+        "width": 100,
+        "x": 0,
+        "y": 0
+      },
+      "style": {
+        "_class": "style",
+        "fills": [
+          {
+            "_class": "fill",
+            "isEnabled": true,
+            "fillType": 0,
+            "color": {
+              "_class": "color",
+              "alpha": 1,
+              "red": 0.5,
+              "green": 0.3,
+              "blue": 0.8
+            }
+          }
+        ],
+        "borders": []
+      }
+    },
+    {
+      "_class": "bitmap",
+      "do_objectID": "B-PHOTO",
+      "booleanOperation": -1,
+      "isVisible": true,
+      "name": "Photo",
+      "frame": {
+        "_class": "rect",
+        "constrainProportions": false,
+        "height": 100,
+        "width": 160,
+        "x": 140,
+        "y": 0
+      },
+      "image": {
+        "_class": "MSJSONFileReference",
+        "_ref_class": "MSImageData",
+        "_ref": "images/photo.png"
+      }
+    }
+  ]
+}

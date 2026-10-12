@@ -1,0 +1,21 @@
+{
+  "commit": "sample",
+  "appVersion": "70",
+  "build": 0,
+  "version": 136,
+  "compatibilityVersion": 99,
+  "pagesAndArtboards": {
+    "PAGE-0001": {
+      "name": "Page 1",
+      "artboards": {
+        "AB-HOME": {
+          "name": "Home"
+        }
+      }
+    },
+    "PAGE-0002": {
+      "name": "Page 2",
+      "artboards": {}
+    }
+  }
+}

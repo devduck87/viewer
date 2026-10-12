@@ -1,0 +1,383 @@
+{
+  "_class": "page",
+  "do_objectID": "PAGE-0001",
+  "name": "Page 1",
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "height": 0,
+    "width": 0,
+    "x": 0,
+    "y": 0
+  },
+  "isVisible": true,
+  "layers": [
+    {
+      "_class": "artboard",
+      "do_objectID": "AB-HOME",
+      "booleanOperation": -1,
+      "isVisible": true,
+      "name": "Home",
+      "frame": {
+        "_class": "rect",
+        "constrainProportions": false,
+        "height": 320,
+        "width": 400,
+        "x": 0,
+        "y": 0
+      },
+      "layers": [
+        {
+          "_class": "group",
+          "do_objectID": "G-HEADER",
+          "booleanOperation": -1,
+          "isVisible": true,
+          "name": "Header",
+          "frame": {
+            "_class": "rect",
+            "constrainProportions": false,
+            "height": 60,
+            "width": 360,
+            "x": 20,
+            "y": 20
+          },
+          "layers": [
+            {
+              "_class": "rectangle",
+              "do_objectID": "R-HEADER-BG",
+              "booleanOperation": -1,
+              "isVisible": true,
+              "name": "Background",
+              "frame": {
+                "_class": "rect",
+                "constrainProportions": false,
+                "height": 60,
+                "width": 360,
+                "x": 0,
+                "y": 0
+              },
+              "style": {
+                "_class": "style",
+                "fills": [
+                  {
+                    "_class": "fill",
+                    "isEnabled": true,
+                    "fillType": 0,
+                    "color": {
+                      "_class": "color",
+                      "alpha": 1,
+                      "red": 0.2,
+                      "green": 0.4,
+                      "blue": 0.8
+                    }
+                  }
+                ],
+                "borders": []
+              }
+            },
+            {
+              "_class": "text",
+              "do_objectID": "T-TITLE",
+              "booleanOperation": -1,
+              "isVisible": true,
+              "name": "Title",
+              "frame": {
+                "_class": "rect",
+                "constrainProportions": false,
+                "height": 28,
+                "width": 200,
+                "x": 16,
+                "y": 16
+              },
+              "attributedString": {
+                "_class": "attributedString",
+                "string": "Sketch Viewer",
+                "attributes": [
+                  {
+                    "_class": "stringAttribute",
+                    "location": 0,
+                    "length": 13,
+                    "attributes": {
+                      "MSAttributedStringFontAttribute": {
+                        "_class": "fontDescriptor",
+                        "attributes": {
+                          "name": "Helvetica-Bold",
+                          "size": 22
+                        }
+                      },
+                      "MSAttributedStringColorAttribute": {
+                        "_class": "color",
+                        "alpha": 1,
+                        "red": 1,
+                        "green": 1,
+                        "blue": 1
+                      }
+                    }
+                  }
+                ]
+              },
+              "textBehaviour": 0
+            }
+          ]
+        },
+        {
+          "_class": "group",
+          "do_objectID": "G-CONTENT",
+          "booleanOperation": -1,
+          "isVisible": true,
+          "name": "Content",
+          "frame": {
+            "_class": "rect",
+            "constrainProportions": false,
+            "height": 200,
+            "width": 360,
+            "x": 20,
+            "y": 100
+          },
+          "layers": [
+            {
+              "_class": "rectangle",
+              "do_objectID": "R-CARD",
+              "booleanOperation": -1,
+              "isVisible": true,
+              "name": "Card",
+              "frame": {
+                "_class": "rect",
+                "constrainProportions": false,
+                "height": 160,
+                "width": 360,
+                "x": 0,
+                "y": 0
+              },
+              "style": {
+                "_class": "style",
+                "fills": [
+                  {
+                    "_class": "fill",
+                    "isEnabled": true,
+                    "fillType": 0,
+                    "color": {
+                      "_class": "color",
+                      "alpha": 1,
+                      "red": 1,
+                      "green": 1,
+                      "blue": 1
+                    }
+                  }
+                ],
+                "borders": []
+              }
+            },
+            {
+              "_class": "oval",
+              "do_objectID": "O-AVATAR",
+              "booleanOperation": -1,
+              "isVisible": true,
+              "name": "Avatar",
+              "frame": {
+                "_class": "rect",
+                "constrainProportions": false,
+                "height": 48,
+                "width": 48,
+                "x": 16,
+                "y": 16
+              },
+              "style": {
+                "_class": "style",
+                "fills": [
+                  {
+                    "_class": "fill",
+                    "isEnabled": true,
+                    "fillType": 0,
+                    "color": {
+                      "_class": "color",
+                      "alpha": 1,
+                      "red": 0.95,
+                      "green": 0.6,
+                      "blue": 0.2
+                    }
+                  }
+                ],
+                "borders": []
+              }
+            },
+            {
+              "_class": "text",
+              "do_objectID": "T-DESC",
+              "booleanOperation": -1,
+              "isVisible": true,
+              "name": "Description",
+              "frame": {
+                "_class": "rect",
+                "constrainProportions": false,
+                "height": 40,
+                "width": 260,
+                "x": 80,
+                "y": 20
+              },
+              "attributedString": {
+                "_class": "attributedString",
+                "string": "Group 内の Text は親の座標を基準に配置されます。",
+                "attributes": [
+                  {
+                    "_class": "stringAttribute",
+                    "location": 0,
+                    "length": 30,
+                    "attributes": {
+                      "MSAttributedStringFontAttribute": {
+                        "_class": "fontDescriptor",
+                        "attributes": {
+                          "name": "Helvetica",
+                          "size": 13
+                        }
+                      },
+                      "MSAttributedStringColorAttribute": {
+                        "_class": "color",
+                        "alpha": 1,
+                        "red": 0.2,
+                        "green": 0.2,
+                        "blue": 0.2
+                      }
+                    }
+                  }
+                ]
+              },
+              "textBehaviour": 1
+            },
+            {
+              "_class": "group",
+              "do_objectID": "G-FOOTER",
+              "booleanOperation": -1,
+              "isVisible": true,
+              "name": "Footer",
+              "frame": {
+                "_class": "rect",
+                "constrainProportions": false,
+                "height": 30,
+                "width": 360,
+                "x": 0,
+                "y": 170
+              },
+              "layers": [
+                {
+                  "_class": "rectangle",
+                  "do_objectID": "R-BUTTON",
+                  "booleanOperation": -1,
+                  "isVisible": true,
+                  "name": "Button",
+                  "frame": {
+                    "_class": "rect",
+                    "constrainProportions": false,
+                    "height": 30,
+                    "width": 120,
+                    "x": 240,
+                    "y": 0
+                  },
+                  "style": {
+                    "_class": "style",
+                    "fills": [
+                      {
+                        "_class": "fill",
+                        "isEnabled": true,
+                        "fillType": 0,
+                        "color": {
+                          "_class": "color",
+                          "alpha": 1,
+                          "red": 0.2,
+                          "green": 0.7,
+                          "blue": 0.4
+                        }
+                      }
+                    ],
+                    "borders": []
+                  }
+                }
+              ]
+            },
+            {
+              "_class": "rectangle",
+              "do_objectID": "R-HIDDEN",
+              "booleanOperation": -1,
+              "isVisible": false,
+              "name": "Hidden Badge",
+              "frame": {
+                "_class": "rect",
+                "constrainProportions": false,
+                "height": 20,
+                "width": 40,
+                "x": 300,
+                "y": 10
+              },
+              "style": {
+                "_class": "style",
+                "fills": [
+                  {
+                    "_class": "fill",
+                    "isEnabled": true,
+                    "fillType": 0,
+                    "color": {
+                      "_class": "color",
+                      "alpha": 1,
+                      "red": 1,
+                      "green": 0,
+                      "blue": 0
+                    }
+                  }
+                ],
+                "borders": []
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_class": "rectangle",
+      "do_objectID": "R-LOOSE",
+      "booleanOperation": -1,
+      "isVisible": true,
+      "name": "Loose Rectangle",
+      "frame": {
+        "_class": "rect",
+        "constrainProportions": false,
+        "height": 80,
+        "width": 120,
+        "x": 460,
+        "y": 40
+      },
+      "style": {
+        "_class": "style",
+        "fills": [
+          {
+            "_class": "fill",
+            "isEnabled": true,
+            "fillType": 0,
+            "color": {
+              "_class": "color",
+              "alpha": 1,
+              "red": 0.9,
+              "green": 0.3,
+              "blue": 0.3
+            }
+          }
+        ],
+        "borders": []
+      }
+    },
+    {
+      "_class": "star",
+      "do_objectID": "S-STAR",
+      "booleanOperation": -1,
+      "isVisible": true,
+      "name": "Star",
+      "frame": {
+        "_class": "rect",
+        "constrainProportions": false,
+        "height": 80,
+        "width": 80,
+        "x": 460,
+        "y": 160
+      }
+    }
+  ]
+}
