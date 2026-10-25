@@ -1,7 +1,7 @@
 import math
 import unittest
 
-from sketch_viewer.geometry import Affine, default_points, flatten_path, layer_transform
+from sketch_viewer.geometry import Affine, contains_point, default_points, flatten_path, layer_transform
 from sketch_viewer.model import CurvePoint, Frame, SketchLayer
 
 
@@ -90,6 +90,21 @@ class FlattenPathTestCase(unittest.TestCase):
 
     def test_empty(self) -> None:
         self.assertEqual(flatten_path([], 10, 10), [])
+
+
+class ContainsPointTestCase(unittest.TestCase):
+    def test_rectangle(self) -> None:
+        rect = [(0, 0), (10, 0), (10, 10), (0, 10)]
+        self.assertTrue(contains_point(rect, 5, 5))
+        self.assertTrue(contains_point(rect, 10, 5))  # 境界
+        self.assertTrue(contains_point(rect, 0, 0))  # 頂点
+        self.assertFalse(contains_point(rect, 11, 5))
+        self.assertFalse(contains_point(rect, 5, -1))
+
+    def test_rotated_square(self) -> None:
+        diamond = [(5, 0), (10, 5), (5, 10), (0, 5)]
+        self.assertTrue(contains_point(diamond, 5, 5))
+        self.assertFalse(contains_point(diamond, 1, 1))
 
 
 if __name__ == "__main__":

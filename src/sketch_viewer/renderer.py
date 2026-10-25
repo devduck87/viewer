@@ -11,9 +11,19 @@ import re
 import tkinter as tk
 from dataclasses import dataclass
 from fractions import Fraction
+from typing import Callable
 
-from .geometry import Affine, Point, bounding_frame, flatten_path, layer_transform, rect_points
+from .geometry import (
+    Affine,
+    Point,
+    bounding_frame,
+    contains_point,
+    flatten_path,
+    layer_transform,
+    rect_points,
+)
 from .model import (
+    ARTBOARD_LAYER_TYPES,
     BitmapLayer,
     Color,
     Frame,
@@ -29,7 +39,7 @@ HIGHLIGHT_TAG = "highlight"
 
 # 子 Layer の座標原点としてのみ使い、自身は描画しない Layer
 _CONTAINER_TYPES = frozenset({"group", "shapeGroup"})
-_ARTBOARD_TYPES = frozenset({"artboard", "symbolMaster"})
+_ARTBOARD_TYPES = ARTBOARD_LAYER_TYPES
 # 書き出し範囲を示すだけで、Sketch の描画結果には現れない Layer
 _INVISIBLE_TYPES = frozenset({"slice"})
 # スタイルを持たない図形を位置確認用に表示する枠線の色
@@ -46,6 +56,8 @@ class DrawItem:
     style: Style  # 描画に使うスタイル (shapeGroup の子は親のスタイルを使う)
     # Layer のローカル座標 (frame 左上が原点) -> Page 座標。回転・反転を含む
     transform: Affine = Affine()
+    # Page 直下の祖先 Layer (自身が Page 直下なら自身)。None は自身と同じ扱い
+    root: SketchLayer | None = None
 
     def outline(self) -> list[Point]:
         """Layer の範囲 (回転・反転後) の 4 頂点を Page 座標で返す。"""
@@ -53,33 +65,80 @@ class DrawItem:
         return [self.transform.apply(x, y) for x, y in rect_points(f.width, f.height)]
 
 
-def layout_page(page: SketchPage) -> list[DrawItem]:
+@dataclass(frozen=True)
+class Placement:
+    """Layer の画面 (Artboard) 上での位置と描画スタイル。"""
+
+    # 所属する画面。画面の外にある Layer は None
+    artboard: SketchLayer | None
+    # 画面の左上を原点とした位置とサイズ (画面の外にある Layer は Page 座標)。
+    # 回転・反転を戻した矩形で、中心は回転後の中心と一致する (Sketch の Inspector と同じ)
+    frame: Frame
+    rotation: float  # 画面上の回転角 (度、反時計回り。親の回転を含む)
+    style: Style
+
+
+def _default_visible(layer: SketchLayer) -> bool:
+    return layer.visible
+
+
+def layout_page(page: SketchPage, is_visible: Callable[[SketchLayer], bool] | None = None,
+                roots: list[SketchLayer] | None = None) -> list[DrawItem]:
     """表示対象の Layer を描画順 (背面 -> 前面) に並べ、絶対座標を計算する。
 
     Sketch では子 Layer の frame は親 Layer からの相対座標であり、
-    layers 配列は先頭が最背面となる。非表示 Layer は子孫ごと除外する。
+    layers 配列は先頭が最背面となる。is_visible が False を返す Layer は子孫ごと除外する
+    (省略時は Sketch 上の表示設定に従う)。roots を指定すると、その Page 直下の Layer だけを対象とする。
     回転・反転は frame の中心を基準に、子 Layer にも引き継がれる。
 
     shapeGroup では塗り・線が shapeGroup 自身に定義され、子の図形 (rectangle など) は
     形状だけを表すため、子の図形には shapeGroup のスタイルを割り当てる。
     """
+    visible = is_visible or _default_visible
     items: list[DrawItem] = []
 
-    def visit(layer: SketchLayer, parent: Affine, depth: int, inherited: Style | None) -> None:
-        if not layer.visible:
+    def visit(layer: SketchLayer, parent: Affine, depth: int, inherited: Style | None,
+              root: SketchLayer) -> None:
+        if not visible(layer):
             return
         transform = parent @ layer_transform(layer)
         f = layer.frame
         frame = bounding_frame([transform.apply(x, y) for x, y in rect_points(f.width, f.height)])
         style = inherited if inherited is not None and not isinstance(layer, TextLayer) else layer.style
-        items.append(DrawItem(layer, frame, depth, style, transform))
+        items.append(DrawItem(layer, frame, depth, style, transform, root))
         child_style = layer.style if layer.type == "shapeGroup" else None
         for child in layer.children:
-            visit(child, transform, depth + 1, child_style)
+            visit(child, transform, depth + 1, child_style, root)
 
-    for layer in page.layers:
-        visit(layer, Affine(), 0, None)
+    targets = page.layers if roots is None else [layer for layer in page.layers if layer in roots]
+    for layer in targets:
+        visit(layer, Affine(), 0, None, layer)
     return items
+
+
+def show_all(_layer: SketchLayer) -> bool:
+    """layout_page に渡すと非表示 Layer も含めて配置する。"""
+    return True
+
+
+def placement_of(page: SketchPage, layer: SketchLayer) -> Placement | None:
+    """Layer の所属する画面と、画面を基準とした位置を求める。非表示 Layer も対象とする。
+
+    Page 内に見つからなければ None。
+    """
+    items = layout_page(page, show_all)
+    item = next((i for i in items if i.layer is layer), None)
+    if item is None:
+        return None
+    root = item.root or item.layer
+    width, height = layer.frame.width, layer.frame.height
+    cx, cy = item.transform.apply(width / 2, height / 2)
+    frame = Frame(cx - width / 2, cy - height / 2, width, height)
+    artboard = root if root.is_artboard else None
+    if artboard is not None:
+        origin = next(i.frame for i in items if i.layer is artboard)
+        frame = frame.offset(-origin.x, -origin.y)
+    return Placement(artboard, frame, item.transform.angle, item.style)
 
 
 def bounds_of(items: list[DrawItem]) -> Frame | None:
@@ -121,27 +180,56 @@ class CanvasRenderer:
     def __init__(self, canvas: tk.Canvas, margin: float = 40.0) -> None:
         self.canvas = canvas
         self.margin = margin
-        self._outlines: dict[int, list[Point]] = {}  # id(layer) -> Canvas 座標の範囲
+        self.scale = 1.0  # 表示倍率 (1.0 で Sketch の 1pt = 1px)
+        self.bounds = Frame()  # 描画範囲 (Page 座標)
+        # id(layer) -> Canvas 座標の範囲 (非表示 Layer も含む)
+        self._outlines: dict[int, list[Point]] = {}
+        # Canvas 上で選択できる Layer (前面 -> 背面の順)
+        self._hit_targets: list[tuple[SketchLayer, list[Point]]] = []
         # Canvas 上の画像は参照を保持しないと破棄されるため保持する
         self._photos: list[tk.PhotoImage] = []
 
-    def render(self, page: SketchPage) -> None:
+    def render(self, page: SketchPage, roots: list[SketchLayer] | None = None,
+               is_visible: Callable[[SketchLayer], bool] | None = None,
+               scale: float = 1.0) -> None:
+        """Page を倍率 scale で描画する。roots で表示する画面を、is_visible で表示する Layer を絞り込める。"""
+        self.scale = scale
         self.canvas.delete("all")
         self._outlines.clear()
+        self._hit_targets.clear()
         self._photos.clear()
 
-        items = layout_page(page)
-        bounds = bounds_of(items) or Frame()
-        to_canvas = Affine.translation(self.margin - bounds.x, self.margin - bounds.y)
-
-        for item in items:
-            transform = to_canvas @ item.transform
+        # 表示の切り替えで描画位置がずれないよう、表示範囲は非表示 Layer も含めて求める
+        all_items = layout_page(page, show_all, roots)
+        bounds = self.bounds = bounds_of(all_items) or Frame()
+        to_canvas = (
+            Affine.translation(self.margin, self.margin)
+            @ Affine.scaling(scale, scale)
+            @ Affine.translation(-bounds.x, -bounds.y)
+        )
+        for item in all_items:
             self._outlines[id(item.layer)] = [to_canvas.apply(*p) for p in item.outline()]
-            self._draw_layer(item.layer, transform, item.style)
+
+        for item in layout_page(page, is_visible, roots):
+            self._draw_layer(item.layer, to_canvas @ item.transform, item.style)
+            if item.layer.type not in _CONTAINER_TYPES and item.layer.type not in _INVISIBLE_TYPES:
+                self._hit_targets.append((item.layer, self._outlines[id(item.layer)]))
+        self._hit_targets.reverse()
 
         self.canvas.configure(scrollregion=(
-            0, 0, bounds.width + self.margin * 2, bounds.height + self.margin * 2,
+            0, 0, bounds.width * scale + self.margin * 2, bounds.height * scale + self.margin * 2,
         ))
+
+    def outline_of(self, layer: SketchLayer) -> list[Point] | None:
+        """描画中の Layer の範囲を Canvas 座標で返す。表示対象外なら None。"""
+        return self._outlines.get(id(layer))
+
+    def layer_at(self, x: float, y: float) -> SketchLayer | None:
+        """Canvas 座標 (x, y) にある最前面の Layer を返す (Group などの入れ物は除く)。"""
+        for layer, outline in self._hit_targets:
+            if contains_point(outline, x, y):
+                return layer
+        return None
 
     def highlight(self, layer: SketchLayer | None) -> None:
         """指定 Layer の範囲を強調表示する。None なら強調を解除する。"""
@@ -186,7 +274,7 @@ class CanvasRenderer:
             return
         fill = _tk_color(style.fill)
         outline = _tk_color(style.border.color) if style.border else ""
-        width = max(style.border.thickness, 1.0) if style.border else 1.0
+        width = max(style.border.thickness * self.scale, 1.0) if style.border else 1.0
         if not fill and not outline:
             # 塗りも線もない図形は Sketch 上では見えないが、位置確認用に点線で示す
             outline = _GUIDE_COLOR
@@ -211,7 +299,7 @@ class CanvasRenderer:
         options: dict[str, object] = {
             "text": layer.text,
             "fill": color,
-            "font": tk_font(layer.font_name, layer.font_size),
+            "font": tk_font(layer.font_name, layer.font_size * self.scale),
         }
         width = layer.frame.width
         if layer.fixed_width and width > 0:
@@ -219,7 +307,7 @@ class CanvasRenderer:
             justify = layer.alignment if layer.alignment in ("right", "center") else "left"
             local_x = {"left": 0.0, "center": width / 2, "right": width}[justify]
             anchor = {"left": "nw", "center": "n", "right": "ne"}[justify]
-            options.update(width=width, justify=justify)
+            options.update(width=width * self.scale, justify=justify)
         else:
             local_x, anchor = 0.0, "nw"
         # Tk の文字列は anchor を中心に回転する (反転は表現できないため回転のみ反映)
@@ -248,7 +336,8 @@ class CanvasRenderer:
             photo = tk.PhotoImage(master=self.canvas, data=base64.b64encode(layer.image_data))
         except tk.TclError:
             return None
-        width, height = round(layer.frame.width), round(layer.frame.height)
+        width = round(layer.frame.width * self.scale)
+        height = round(layer.frame.height * self.scale)
         zoom_x, sub_x = image_scale_factors(photo.width(), width)
         zoom_y, sub_y = image_scale_factors(photo.height(), height)
         if zoom_x != 1 or zoom_y != 1:

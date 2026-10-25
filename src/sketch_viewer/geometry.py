@@ -95,6 +95,19 @@ def bounding_frame(points: list[Point]) -> Frame:
     return Frame(min(xs), min(ys), max(xs) - min(xs), max(ys) - min(ys))
 
 
+def contains_point(polygon: list[Point], x: float, y: float) -> bool:
+    """点 (x, y) が多角形の内側 (境界を含む) にあるか。"""
+    inside = False
+    n = len(polygon)
+    for i in range(n):
+        p, q = polygon[i], polygon[(i + 1) % n]
+        if _on_segment(p, q, (x, y)):
+            return True
+        if (p[1] > y) != (q[1] > y) and x < p[0] + (y - p[1]) * (q[0] - p[0]) / (q[1] - p[1]):
+            inside = not inside
+    return inside
+
+
 def default_points(shape_type: str, corner_radius: float = 0.0) -> list[CurvePoint]:
     """points を持たない古い形式の rectangle / oval 用の頂点列。"""
     if shape_type == "oval":
@@ -179,6 +192,13 @@ def _bezier(p0: Point, p1: Point, p2: Point, p3: Point, steps: int = _CURVE_STEP
             w0 * p0[1] + w1 * p1[1] + w2 * p2[1] + w3 * p3[1],
         ))
     return result
+
+
+def _on_segment(p: Point, q: Point, r: Point) -> bool:
+    cross = (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0])
+    return (abs(cross) < 1e-6
+            and min(p[0], q[0]) - _EPSILON <= r[0] <= max(p[0], q[0]) + _EPSILON
+            and min(p[1], q[1]) - _EPSILON <= r[1] <= max(p[1], q[1]) + _EPSILON)
 
 
 def _close(p: Point, q: Point) -> bool:

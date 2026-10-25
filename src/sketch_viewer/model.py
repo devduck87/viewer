@@ -17,6 +17,8 @@ SUPPORTED_LAYER_TYPES = frozenset({
 })
 # points (曲線の頂点列) で形状を表す Layer
 SHAPE_LAYER_TYPES = frozenset({"rectangle", "oval", "shapePath", "triangle", "star", "polygon"})
+# 1 つの画面を表す Layer (Page 直下に置かれ、子 Layer の座標の基準となる)
+ARTBOARD_LAYER_TYPES = frozenset({"artboard", "symbolMaster"})
 
 
 @dataclass(frozen=True)
@@ -99,11 +101,24 @@ class SketchLayer:
     def is_supported(self) -> bool:
         return self.type in SUPPORTED_LAYER_TYPES
 
+    @property
+    def is_artboard(self) -> bool:
+        return self.type in ARTBOARD_LAYER_TYPES
+
     def walk(self, depth: int = 0) -> Iterator[tuple[SketchLayer, int]]:
         """自身と子孫を深さ優先で (layer, depth) として列挙する。"""
         yield self, depth
         for child in self.children:
             yield from child.walk(depth + 1)
+
+    def matches(self, query: str) -> bool:
+        """名前または Text の文字列に query を含むか (大文字・小文字を区別しない)。"""
+        needle = query.casefold()
+        if not needle:
+            return False
+        if needle in self.name.casefold():
+            return True
+        return isinstance(self, TextLayer) and needle in self.text.casefold()
 
 
 @dataclass
@@ -161,6 +176,10 @@ class SketchPage:
         """Page 内の全 Layer を深さ優先で (layer, depth) として列挙する。"""
         for layer in self.layers:
             yield from layer.walk()
+
+    def artboards(self) -> list[SketchLayer]:
+        """Page 直下の画面 (Artboard / Symbol Master) を並び順に返す。"""
+        return [layer for layer in self.layers if layer.is_artboard]
 
 
 @dataclass
